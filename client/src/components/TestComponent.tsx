@@ -2,8 +2,8 @@ import React from "react";
 
 const TestComponent: React.FC = () => {
   return (
-    <div className="flex items-center justify-center h-screen">
-      <p className="text-teal-500 text-9xl font-extrabold text-center">hello</p>
+    <div className="flex h-screen items-center justify-center">
+      <p className="text-center text-9xl font-extrabold text-teal-500">hello</p>
     </div>
   );
 };
