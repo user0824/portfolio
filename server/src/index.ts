@@ -3,14 +3,22 @@
 // ----------------------------------------------------------------------------------------
 
 import express from "express";
+import cors from "cors";
 import "dotenv/config";
 import chalk from "chalk";
 
 const app = express();
 const port = process.env.PORT;
 
-app.get("/", (reg, res) => {
+app.use(cors());
+
+app.get("/", (req, res) => {
   res.status(200).send("Hello from the server side! Time to go!");
+});
+
+// ! Using this as a test endpoint to send to frontent for connection confirmation
+app.get("/status", (req, res) => {
+  res.status(200).json({ status: "online", message: "Server is online!" });
 });
 
 // ----------------------------------------------------------------------------------------
