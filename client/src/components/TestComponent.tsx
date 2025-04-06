@@ -13,12 +13,17 @@ const TestComponent: React.FC = () => {
         );
         if (response.status === 200) {
           setIsConnected(true);
+          clearInterval(intervalId);
         }
       } catch (error) {
         console.error("Error connecting to server:", error);
       }
     };
-    connectedToServer();
+    // Try to connect to server every 5 seconds (Render take ~23s to cold start)
+    const intervalId = setInterval(connectedToServer, 5000);
+
+    // cleanup function to clear the interval upon successful connection
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
